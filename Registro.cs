@@ -23,6 +23,7 @@ namespace Simulación_Examen
         private void Registro_Load(object sender, EventArgs e)
         {
             cargarDepartamento();
+            cargarTemps();
         }
 
         private void cargarDepartamento()
@@ -90,6 +91,25 @@ namespace Simulación_Examen
         {
             textBoxTempe.Text = "";
             comboBox1.Text = "";
+        }
+
+        private void cargarTemps()
+        {
+            string fileName = @"..\..\Temperaturas.txt";
+
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+
+            while (reader.Peek() > -1)
+            {
+                Temperatura tempte = new Temperatura();
+                tempte.IdenDep = int.Parse(reader.ReadLine());
+                tempte.Temp = Convert.ToDouble(reader.ReadLine());
+                tempte.Fecha = Convert.ToDateTime(reader.ReadLine());
+
+                temperaturas.Add(tempte);
+            }
+            reader.Close();
         }
     }
 }
