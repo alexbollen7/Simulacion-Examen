@@ -103,11 +103,34 @@ namespace Simulación_Examen
 
         private void buttonOrdenarTemps_Click(object sender, EventArgs e)
         {
-
+            ordenarTemps();
         }
 
         private void ordenarTemps()
         {
+            registroTemps = registroTemps.OrderBy(p => p.Temp).ToList();
+            dataGridView1.DataSource = null;
+            dataGridView1.Refresh();
+            dataGridView1.DataSource = registroTemps;
+            dataGridView1.Refresh();
+        }
+
+        private void buttonPromedioTemps_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("El promedio d las temperaturas registradas es: " + promedioTemp() + " grados");
+        }
+
+        private double promedioTemp()
+        {
+            double suma = 0;
+            int cont = 0;
+            foreach(var temp in temperaturas)
+            {
+                suma += temp.Temp;
+                cont++;
+            }
+            suma = suma / cont;
+            return suma;
 
         }
     }

@@ -110,6 +110,7 @@ namespace Simulación_Examen
             this.buttonPromedioTemps.TabIndex = 5;
             this.buttonPromedioTemps.Text = "Promedio temperaturas";
             this.buttonPromedioTemps.UseVisualStyleBackColor = true;
+            this.buttonPromedioTemps.Click += new System.EventHandler(this.buttonPromedioTemps_Click);
             // 
             // Form1
             // 
